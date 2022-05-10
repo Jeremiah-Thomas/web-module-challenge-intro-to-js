@@ -19,8 +19,12 @@ Do the following:
 
    HINT: no function required
 */
-
-
+let votingAge = 20;
+if (votingAge >= 18) {
+  console.log("true");
+} else {
+  console.log("false");
+}
 
 /*
 Task 1b - Values (not auto tested)
@@ -33,10 +37,13 @@ Do the following:
 
    HINT: no function required
 */
+let firstThing = "thing 1";
+let secondThing = "thing 2";
 
-
-
-
+if (firstThing === secondThing) {
+  firstThing = "another thing";
+}
+console.log(firstThing);
 
 /*
 Task 1c - Convert Strings to Numbers (not auto tested)
@@ -48,9 +55,8 @@ Do the following:
 
    HINT: look up the Number method
 */
-
-
-
+let str = "1999";
+console.log(Number.parseInt(str));
 
 /*
 Task 1d - Multiply
@@ -61,11 +67,9 @@ Do the following:
    3. Multiply a and b and return the answer
 */
 
-function multiply(/*add your code here*/){
-  /*add your code here*/
+function multiply(a, b) {
+  return a * b;
 }
-
-
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -77,11 +81,9 @@ Do the following:
  3. Return the newly calculated age
 */
 
-function dogYears(/*add your code here*/){
-  /*add your code here*/
+function dogYears(age) {
+  return age * 7;
 }
-
-
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 3 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -127,13 +129,31 @@ NOTE 2: This is a great time to check the tests to see what it expects, versus w
       
         Notice the expected and received, expected is what the test is looking for, and received is what was actually returned from this function. You can also see it's passing in two values, the number 4 and the number 1. 
         So, on this one test, the weight would be 4 pounds, and the age would be 1 years old. It's expecting your function to return a decimal number of 0.2
-*/  
+*/
 
-function hungryDog(/*add your code here*/){
-  /*add your code here*/
+function hungryDog(weight, age) {
+  let foodWeight;
+  if (age >= 1) {
+    if (weight <= 5) {
+      foodWeight = weight * 0.05;
+    } else if (weight >= 6 && weight <= 10) {
+      foodWeight = weight * 0.04;
+    } else if (weight >= 11 && weight <= 15) {
+      foodWeight = weight * 0.03;
+    } else if (weight > 15) {
+      foodWeight = weight * 0.02;
+    }
+  } else if (age < 1) {
+    if (age > 0.17 && age < 0.34) {
+      foodWeight = weight * 0.1;
+    } else if (age > 0.34 && age < 0.58) {
+      foodWeight = weight * 0.05;
+    } else if (age > 0.58 && age < 1) {
+      foodWeight = weight * 0.04;
+    }
+  }
+  return foodWeight;
 }
-
-
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -156,16 +176,37 @@ Use the game function below to do the following:
 RULES OF THE GAME: Scissors beats Paper | Paper beats Rock | Rock beats Scissors | Or there's a tie
 */
 
-function game(user, computer){
-  /*add your code here*/
+let comChoice = Math.random();
+if (comChoice <= 0.33) {
+  comChoice = "rock";
+} else if (comChoice > 0.33 && comChoice <= 0.66) {
+  comChoice = "paper";
+} else if (comChoice > 0.66) {
+  comChoice = "scissors";
 }
 
-
+function game(user, computer) {
+  if (user === computer) {
+    return "it's a tie";
+  } else if (user === "rock" && computer === "scissors") {
+    return "you win!";
+  } else if (user === "paper" && computer === "rock") {
+    return "you win!";
+  } else if (user === "scissors" && computer === "paper") {
+    return "you win!";
+  } else if (computer === "rock" && user === "scissors") {
+    return "you lose!";
+  } else if (computer === "paper" && user === "rock") {
+    return "you lose!";
+  } else if (computer === "scissors" && user === "paper") {
+    return "you lose!";
+  }
+}
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
-//Metric Converter 
-//Task 5a - KM to Miles 
+//Metric Converter
+//Task 5a - KM to Miles
 /*
 Using the miles function below do the following:
 1. Receive a number of kilometers
@@ -173,11 +214,9 @@ Using the miles function below do the following:
 3. Return the number of miles
 */
 
-function miles(/*add your code here*/){
-  /*add your code here*/
+function miles(km) {
+  return km * 0.621371;
 }
-
-
 
 //Task 5b - Feet to CM
 /*
@@ -187,11 +226,9 @@ Using the feet function below do the following:
 3. Return number of feet
 */
 
-function feet(/*add your code here*/){
-  /*add your code here*/
+function feet(cm) {
+  return cm / 30.48;
 }
-
-
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -207,10 +244,15 @@ Using the annoyingSong function below do the following:
 4. Each time the annoyingSong is run from this loop, it should console.log the string that was returned. 
 */
 
-function annoyingSong(/*add your code here*/){
-      /*add your code here*/
+function annoyingSong(num) {
+  return `${num} bottles of soda on the wall, ${num} bottles of soda, take one down pass it around ${
+    num - 1
+  } bottles of soda on the wall`;
 }
 
+for (let i = 100; i > 0; i--) {
+  console.log(annoyingSong(i));
+}
 
 /*🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀*/
 
@@ -227,11 +269,19 @@ Using the grade function below do the following:
  below should return 'you got an F'
 */
 
-function grade(/*Your Code here */){
-/*Your Code here */
+function grade(score) {
+  if (score >= 90) {
+    return "you got an A";
+  } else if (score >= 80 && score <= 89) {
+    return "you got a B";
+  } else if (score >= 70 && score <= 79) {
+    return "you got a C";
+  } else if (score >= 60 && score <= 69) {
+    return "you got a D";
+  } else if (score < 60) {
+    return "you got an F";
+  }
 }
-
-
 
 /*💪💪💪💪💪💪💪💪💪💪 Stretch 💪💪💪💪💪💪💪💪💪💪*/
 
@@ -245,17 +295,28 @@ HINT - you may need to study tomorrow's content on arrays
 HINT - try looking up the .includes() method
 */
 
-
-function vowelCounter(/*add your code here*/) {
-  /*add your code here*/
+function vowelCounter(string) {
+  string = string.toLowerCase();
+  const vowels = ["a", "e", "i", "o", "u"];
+  let vowelsNum = 0;
+  for (i = 0; i <= string.length; i++) {
+    if (
+      string[i] === vowels[0] ||
+      string[i] === vowels[1] ||
+      string[i] === vowels[2] ||
+      string[i] === vowels[3] ||
+      string[i] === vowels[4]
+    ) {
+      vowelsNum++;
+    }
+  }
+  return vowelsNum;
 }
 
-
-
 /*🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑*/
-function foo(){
-  console.log('its working');
-  return 'bar';
+function foo() {
+  console.log("its working");
+  return "bar";
 }
 foo();
 /*🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Don't touch the code after this line! 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑*/
@@ -268,5 +329,5 @@ module.exports = {
   miles,
   feet,
   annoyingSong,
-  grade
-}
+  grade,
+};
